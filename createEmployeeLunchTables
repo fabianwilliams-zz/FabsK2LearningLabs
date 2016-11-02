@@ -1,0 +1,18 @@
+CREATE TABLE EmployeeMealType (
+ EmtNumber  INTEGER NOT NULL,
+ MealTypeName            VARCHAR(20) NOT NULL,
+ MealTypeLocation         VARCHAR(50) NOT NULL,
+ ActiveYN            CHAR(1),
+ CONSTRAINT emt_pk PRIMARY KEY(EmtNumber),
+ CONSTRAINT number_value CHECK (EmtNumber > 0) )
+
+CREATE TABLE EmployeeMeals (
+ MealNumber   INTEGER NOT NULL,
+ EmtNumber  INTEGER NOT NULL,
+ MealName            VARCHAR(50),
+ MealDesc            VARCHAR(255),
+ MealCalorieNumber         INTEGER NOT NULL,
+ CONSTRAINT meal_pk PRIMARY KEY(MealNumber),
+ CONSTRAINT mnumber_value CHECK (MealNumber > 0),
+ CONSTRAINT mealtype_fk FOREIGN KEY(EmtNumber)
+    REFERENCES EmployeeMealType(EmtNumber))
