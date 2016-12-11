@@ -16,3 +16,31 @@ CREATE TABLE EmployeeMeals (
  CONSTRAINT mnumber_value CHECK (MealNumber > 0),
  CONSTRAINT mealtype_fk FOREIGN KEY(EmtNumber)
     REFERENCES EmployeeMealType(EmtNumber))
+    
+    // Done for New Demo
+    
+    CREATE TABLE FabsCorporatePrograms (
+ fcpNumber  INTEGER NOT NULL,
+ fcpName            VARCHAR(20) NOT NULL,
+ fcpOwner            VARCHAR(20) NOT NULL,
+ fcpBudget            DECIMAL NOT NULL,
+ fcpLocation         VARCHAR(50) NOT NULL,
+ ActiveYN            CHAR(1),
+ CONSTRAINT fcp_pk PRIMARY KEY(fcpNumber),
+ CONSTRAINT fcp_number_value CHECK (fcpNumber > 0) )
+ 
+ 
+CREATE TABLE FabsTaskOrders (
+ ftoNumber   INTEGER NOT NULL,
+ fcpNumber  INTEGER NOT NULL,
+ toName            VARCHAR(50),
+ toOwnerName            VARCHAR(50),
+ toOwnerEmail		VARCHAR(50),
+ toDesc            VARCHAR(255),
+ toBudgetRequested         DECIMAL,
+ toBudgetApproved         DECIMAL,
+ toApprovedYN		CHAR(1),
+ CONSTRAINT to_pk PRIMARY KEY(ftoNumber),
+ CONSTRAINT ftonumber_value CHECK (ftoNumber > 0),
+ CONSTRAINT corpprogram_fk FOREIGN KEY(ftoNumber)
+    REFERENCES FabsCorporatePrograms(fcpNumber))
