@@ -42,5 +42,5 @@ CREATE TABLE FabsTaskOrders (
  toApprovedYN		CHAR(1),
  CONSTRAINT to_pk PRIMARY KEY(ftoNumber),
  CONSTRAINT ftonumber_value CHECK (ftoNumber > 0),
- CONSTRAINT corpprogram_fk FOREIGN KEY(ftoNumber)
+ CONSTRAINT corpprogram_fk FOREIGN KEY(fcpNumber)
     REFERENCES FabsCorporatePrograms(fcpNumber))
